@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive physics notes with mathematical equations and easy navigation">
+    <title>Physics Notes Library</title>
+
+    <!-- Styles -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --nav-width: 300px;
+            --header-height: 80px;
+            --footer-height: 60px;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--background-color);
+            color: var(--text-color);
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "nav main"
+                "footer footer";
+            grid-template-columns: var(--nav-width) 1fr;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+        }
+
+        header {
+            grid-area: header;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: var(--header-height);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        nav {
+            grid-area: nav;
+            background: white;
+            padding: 2rem;
+            border-right: 1px solid #eee;
+            height: calc(100vh - var(--header-height) - var(--footer-height));
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+        }
+
+        main {
+            grid-area: main;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: calc(100vh - var(--header-height) - var(--footer-height));
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            grid-area: footer;
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            height: var(--footer-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-container {
+            margin-bottom: 2rem;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        #notes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #notes-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        #notes-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 0.75rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        #notes-list a:hover {
+            background: var(--background-color);
+            color: var(--secondary-color);
+        }
+
+        #notes-list a.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            position: relative;
+        }
+
+        .loading::after {
+            content: "Loading...";
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .error {
+            padding: 1.5rem;
+            border-left: 4px solid #e74c3c;
+            background: #fdf3f2;
+            color: #c0392b;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        #table-of-contents {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: 4px;
+        }
+
+        #table-of-contents h2 {
+            margin-top: 0;
+        }
+
+        #table-of-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #table-of-contents li {
+            margin: 0.5rem 0;
+        }
+
+        #table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        #table-of-contents a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-areas:
+                    "header"
+                    "nav"
+                    "main"
+                    "footer";
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                height: auto;
+                position: static;
+                padding: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Marked.js Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <script>
+        // Configure marked options
+        window.addEventListener('DOMContentLoaded', () => {
+            marked.use({
+                breaks: true,
+                gfm: true,
+                headerIds: true,
+                mangle: false
+            });
+        });
+    </script>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                tags: 'ams'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                processHtmlClass: 'math'
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        console.log('MathJax initial typesetting complete');
+                    });
+                }
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Physics Notes Library</h1>
+        <p>Comprehensive physics notes with interactive equations</p>
+    </header>
+
+    <nav aria-label="Notes navigation">
+        <div class="search-container">
+            <label for="search-input" class="sr-only">Search notes</label>
+            <input type="text" id="search-input" placeholder="Search notes..." aria-label="Search through notes">
+        </div>
+        <ul id="notes-list" role="navigation" aria-label="Notes list">
+            <!-- Dynamically populated -->
+        </ul>
+    </nav>
+
+    <main id="content" role="main">
+        <div id="table-of-contents" role="navigation" aria-label="Table of contents"></div>
+        <div id="note-content">
+            <p>Select a note from the sidebar to begin reading.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Physics Notes Library. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Notes management
+        class NotesManager {
+            constructor() {
+                this.notes = [
+                    'example.md'
+                ];
+                this.currentNote = null;
+                this.initialize();
+            }
+
+            initialize() {
+                this.setupNotesList();
+                this.setupSearch();
+                this.loadFromHash();
+                window.addEventListener('hashchange', () => this.loadFromHash());
+                window.addEventListener('error', this.handleGlobalError.bind(this));
+            }
+
+            setupNotesList() {
+                const notesList = document.getElementById('notes-list');
+                this.notes.forEach(note => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `#${note}`;
+                    a.textContent = this.formatTitle(note);
+                    a.setAttribute('aria-label', `Open ${this.formatTitle(note)} note`);
+                    li.appendChild(a);
+                    notesList.appendChild(li);
+                });
+            }
+
+            setupSearch() {
+                const searchInput = document.getElementById('search-input');
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    const links = document.querySelectorAll('#notes-list a');
+                    links.forEach(link => {
+                        const text = link.textContent.toLowerCase();
+                        const display = text.includes(query) ? 'block' : 'none';
+                        link.parentElement.style.display = display;
+                        link.parentElement.setAttribute('aria-hidden', display === 'none');
+                    });
+                });
+            }
+
+            formatTitle(filename) {
+                return filename
+                    .replace('.md', '')
+                    .replace(/_/g, ' ')
+                    .replace(/\b\w/g, c => c.toUpperCase());
+            }
+
+            loadFromHash() {
+                const noteId = window.location.hash.slice(1) || this.notes[0];
+                this.loadNote(noteId);
+            }
+
+            async loadNote(noteId) {
+                if (!noteId || !this.notes.includes(noteId)) {
+                    this.showError(new Error('Note not found'));
+                    return;
+                }
+
+                this.updateActiveLink(noteId);
+                this.showLoading();
+
+                try {
+                    const response = await fetch(`notes/${noteId}`);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load note: ${response.statusText}`);
+                    }
+
+                    const content = await response.text();
+                    await this.renderNote(content);
+                } catch (error) {
+                    this.showError(error);
+                    console.error('Error loading note:', error);
+                }
+            }
+
+            updateActiveLink(noteId) {
+                const links = document.querySelectorAll('#notes-list a');
+                links.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${noteId}`;
+                    link.classList.toggle('active', isActive);
+                    link.setAttribute('aria-current', isActive ? 'page' : 'false');
+                });
+            }
+
+            showLoading() {
+                const content = document.getElementById('note-content');
+                content.innerHTML = '<div class="loading" role="status" aria-live="polite"></div>';
+            }
+
+            showError(error) {
+                const content = document.getElementById('note-content');
+                content.innerHTML = `
+                    <div class="error" role="alert">
+                        <h3>Error Loading Note</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+
+            async renderNote(markdown) {
+                try {
+                    if (!marked) {
+                        throw new Error('Markdown parser not loaded');
+                    }
+
+                    const content = document.getElementById('note-content');
+                    const html = marked.parse(markdown);
+                    content.innerHTML = html;
+
+                    this.generateTableOfContents();
+                    await MathJax.typesetPromise();
+                } catch (error) {
+                    this.showError(error);
+                    console.error('Error rendering note:', error);
+                }
+            }
+
+            generateTableOfContents() {
+                const headings = document.querySelectorAll('#note-content h1, #note-content h2');
+                const toc = document.getElementById('table-of-contents');
+
+                if (headings.length > 0) {
+                    const tocHtml = ['<h2>Contents</h2>', '<ul>'];
+                    headings.forEach((heading, index) => {
+                        const id = `section-${index}`;
+                        heading.id = id;
+                        tocHtml.push(`
+                            <li>
+                                <a href="#${id}" aria-label="Jump to section: ${heading.textContent}">
+                                    ${heading.textContent}
+                                </a>
+                            </li>
+                        `);
+                    });
+                    tocHtml.push('</ul>');
+                    toc.innerHTML = tocHtml.join('');
+                } else {
+                    toc.innerHTML = '';
+                }
+            }
+
+            handleGlobalError(event) {
+                console.error('Global error:', event.error);
+                this.showError(new Error('An unexpected error occurred'));
+                event.preventDefault();
+            }
+        }
+
+        // Initialize the application when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new NotesManager();
+        });
+    </script>
+</body>
+
+</html>
