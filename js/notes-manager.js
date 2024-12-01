@@ -328,4 +328,5 @@ class NotesManager {
 // Initialize the application when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.notesManager = new NotesManager();
+
 });
