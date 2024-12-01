@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive physics notes with mathematical equations">
+    <title>Physics Notes Library</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Marked.js for Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <input type="text" id="search-input" placeholder="Search notes...">
+            </div>
+            <div class="note-list">
+                <!-- Dynamically populated -->
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="note-content">
+                <p>Select a note to begin reading.</p>
+            </div>
+            <div id="backlinks" class="backlinks">
+                <h3>Linked References</h3>
+                <div class="backlinks-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/notes-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.notesManager = new NotesManager();
+        });
+    </script>
+</body>
+
+</html>

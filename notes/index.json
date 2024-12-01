@@ -1,0 +1,145 @@
+{
+    "notes": [
+        {
+            "id": "physics-foundations",
+            "title": "Foundations of Physics",
+            "path": "foundations/introduction.md",
+            "tags": ["physics", "introduction"],
+            "type": "main-topic",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": []
+        },
+        {
+            "id": "classical-mechanics",
+            "title": "Classical Mechanics",
+            "path": "classical_mechanics/introduction.md",
+            "tags": ["classical-mechanics", "introduction"],
+            "type": "main-topic",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["physics-foundations"]
+        },
+        {
+            "id": "kinematics",
+            "title": "Kinematics",
+            "path": "classical_mechanics/kinematics/introduction.md",
+            "tags": ["classical-mechanics", "kinematics"],
+            "type": "subtopic",
+            "parentTopic": "classical-mechanics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["classical-mechanics"]
+        },
+        {
+            "id": "vectors-motion",
+            "title": "Vectors in Motion",
+            "path": "classical_mechanics/kinematics/vectors.md",
+            "tags": ["classical-mechanics", "kinematics", "vectors"],
+            "type": "concept",
+            "parentTopic": "kinematics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["kinematics"]
+        },
+        {
+            "id": "one-dimensional-motion",
+            "title": "One-Dimensional Motion",
+            "path": "classical_mechanics/kinematics/one_dimensional_motion.md",
+            "tags": ["classical-mechanics", "kinematics", "motion"],
+            "type": "concept",
+            "parentTopic": "kinematics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["vectors-motion"]
+        },
+        {
+            "id": "two-dimensional-motion",
+            "title": "Two-Dimensional Motion",
+            "path": "classical_mechanics/kinematics/two_dimensional_motion.md",
+            "tags": ["classical-mechanics", "kinematics", "motion"],
+            "type": "concept",
+            "parentTopic": "kinematics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["one-dimensional-motion"]
+        },
+        {
+            "id": "dynamics",
+            "title": "Dynamics",
+            "path": "classical_mechanics/dynamics/introduction.md",
+            "tags": ["classical-mechanics", "dynamics"],
+            "type": "subtopic",
+            "parentTopic": "classical-mechanics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["kinematics"]
+        },
+        {
+            "id": "forces",
+            "title": "Forces",
+            "path": "classical_mechanics/dynamics/forces.md",
+            "tags": ["classical-mechanics", "dynamics", "forces"],
+            "type": "concept",
+            "parentTopic": "dynamics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["dynamics"]
+        },
+        {
+            "id": "newtons-laws",
+            "title": "Newton's Laws of Motion",
+            "path": "classical_mechanics/dynamics/newtons_laws.md",
+            "tags": ["classical-mechanics", "dynamics", "forces"],
+            "type": "concept",
+            "parentTopic": "dynamics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["forces"]
+        },
+        {
+            "id": "friction-resistance",
+            "title": "Friction and Resistance",
+            "path": "classical_mechanics/dynamics/friction.md",
+            "tags": ["classical-mechanics", "dynamics", "forces"],
+            "type": "concept",
+            "parentTopic": "dynamics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["newtons-laws"]
+        },
+        {
+            "id": "energy-work",
+            "title": "Energy and Work",
+            "path": "classical_mechanics/energy/introduction.md",
+            "tags": ["classical-mechanics", "energy"],
+            "type": "subtopic",
+            "parentTopic": "classical-mechanics",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["dynamics"]
+        },
+        {
+            "id": "work",
+            "title": "Work and Power",
+            "path": "classical_mechanics/energy/work.md",
+            "tags": ["classical-mechanics", "energy", "work"],
+            "type": "concept",
+            "parentTopic": "energy-work",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["energy-work"]
+        },
+        {
+            "id": "conservation-laws",
+            "title": "Conservation Laws",
+            "path": "classical_mechanics/energy/conservation.md",
+            "tags": ["classical-mechanics", "energy", "conservation"],
+            "type": "concept",
+            "parentTopic": "energy-work",
+            "created": "2024-01-01",
+            "modified": "2024-01-01",
+            "prerequisites": ["work"]
+        }
+    ]
+}
