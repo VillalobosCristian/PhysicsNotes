@@ -1,40 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('dark-mode-toggle');
+    const body = document.body;
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (prefersDark) {
-        document.body.classList.add('dark-mode');
+    const darkMode = JSON.parse(localStorage.getItem('darkMode'));
+    if (darkMode !== null) {
+        body.classList.toggle('dark-mode', darkMode);
+        toggleButton.textContent = darkMode ? '☀️' : '🌙';
+    } else if (prefersDark) {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
     }
 
     toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        // Save preference to localStorage
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
-        toggleButton.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        toggleButton.textContent = isDarkMode ? '☀️' : '🌙';
+        localStorage.setItem('darkMode', isDarkMode);
     });
 
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-
-    // Ensure workflow section adapts to dark mode
-    const workflowSection = document.getElementById('workflow');
-    if (workflowSection) {
-        // Example: Change text color in dark mode
-        const observer = new MutationObserver(() => {
-            if (document.body.classList.contains('dark-mode')) {
-                workflowSection.style.color = 'var(--text-color)';
-            } else {
-                workflowSection.style.color = 'var(--text-color)';
-            }
-        });
-
-        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    }
+    /* ...existing code... */
 });

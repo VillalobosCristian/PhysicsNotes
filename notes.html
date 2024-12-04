@@ -2,10 +2,34 @@
 <html lang="en">
 
 <head>
+    <!--
+    This HTML file represents the main page of an Interactive Physics and Mathematics Knowledge Base.
+    It includes the following sections:
+
+    1. Document Metadata:
+        - DOCTYPE declaration and HTML language attribute.
+        - Meta tags for character set, viewport settings, description, keywords, and author.
+        - Title of the document.
+
+    2. Typography:
+        - Link to Google Fonts for "Roboto" and "Merriweather" fonts.
+
+    3. Styles:
+        - Links to external CSS stylesheets (styles.css and notes.css).
+
+    4. MathJax Configuration:
+        - Configuration script for MathJax to render mathematical equations.
+
+    5. Scripts:
+        - External scripts for polyfills, MathJax, Markdown parsing, and real-time collaboration.
+    -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Interactive Physics and Mathematics Knowledge Base">
-    <meta name="keywords" content="Physics, Mechanics, Quantum, Electromagnetism, Relativity, Thermodynamics, Mathematics">
+    <meta name="keywords"
+        content="Physics, Mechanics, Quantum, Electromagnetism, Relativity, Thermodynamics, Mathematics">
+    <meta name="author" content="Your Name">
     <title>Physics Knowledge Base</title>
 
     <!-- Typography -->
@@ -44,14 +68,18 @@
         <aside class="sidebar" aria-labelledby="sidebar-header">
             <header class="sidebar-header" id="sidebar-header">
                 <!-- Home Link -->
-                <a href="index.html" class="home-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <!-- SVG Paths -->
+                <a href="index.html" class="home-link" aria-label="Home">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
+                        <!-- SVG Paths for Home Icon -->
+                        <path d="M3 9l9-7 9 7"></path>
+                        <path d="M9 22V12H15V22"></path>
                     </svg>
                     Home
                 </a>
                 <!-- Search -->
                 <div class="search-container">
+                    <label for="search-input" class="visually-hidden">Search notes</label>
                     <input type="search" id="search-input" name="search" placeholder="Search notes..."
                         aria-label="Search notes">
                 </div>
@@ -60,21 +88,27 @@
             <nav class="note-navigation" aria-label="Note Navigation">
                 <div class="note-list" role="list">
                     <!-- Dynamic Note Links Will Be Injected Here -->
+                    <!-- Example Static Links (Can be replaced with dynamic content) -->
+                    <a href="#classical-mechanics" class="sidebar-nav-link" role="listitem">Classical Mechanics</a>
+                    <a href="#quantum-mechanics" class="sidebar-nav-link" role="listitem">Quantum Mechanics</a>
+                    <a href="#electromagnetism" class="sidebar-nav-link" role="listitem">Electromagnetism</a>
+                    <a href="#relativity" class="sidebar-nav-link" role="listitem">Relativity</a>
+                    <a href="#thermodynamics" class="sidebar-nav-link" role="listitem">Thermodynamics</a>
                 </div>
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="content">
+        <main class="content" role="main">
             <!-- Breadcrumbs -->
-            <div class="content-header">
+            <header class="content-header">
                 <nav class="breadcrumbs" aria-label="Breadcrumb">
                     <ol>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li aria-current="page">Notes</li>
                     </ol>
                 </nav>
-            </div>
+            </header>
 
             <!-- Note Content -->
             <article class="note-content-wrapper">
@@ -86,30 +120,46 @@
                         </div>
                     </section>
                 </div>
-            </article>
 
-            <!-- Workflow Section -->
-            <section id="workflow">
-                <h2>Project Workflow</h2>
-                <!-- Workflow steps will be populated here by NotesManager -->
-            </section>
+                <!-- Add TOC Container -->
+                <nav class="table-of-contents" aria-label="Table of Contents">
+                    <h2>Table of Contents</h2>
+                    <ul id="toc-list">
+                        <!-- TOC Items Will Be Injected Here -->
+                    </ul>
+                </nav>
+            </article>
 
             <!-- Backlinks -->
             <aside class="backlinks" aria-live="polite">
                 <h3>Linked References</h3>
-                <div class="backlinks-content" id="backlinks"></div>
+                <div class="backlinks-content" id="backlinks">
+                    <!-- Dynamic Backlink Content Will Be Injected Here -->
+                </div>
             </aside>
         </main>
     </div>
 
+    <!-- Collaboration Toolbar -->
     <div class="collaboration-toolbar" aria-label="Collaboration Toolbar">
-        <div class="active-users" aria-label="Active Users"></div>
+        <div class="active-users" aria-label="Active Users">
+            <!-- Active Users Indicators -->
+            <span class="user-icon" aria-hidden="true">👤</span>
+            <span class="user-icon" aria-hidden="true">👥</span>
+        </div>
         <button class="share-button" aria-label="Share Note">Share Note</button>
-        <div class="comment-thread" aria-label="Comment Thread"></div>
+        <div class="comment-thread" aria-label="Comment Thread">
+            <!-- Comment Thread Interface -->
+        </div>
+    </div>
+
+    <!-- Tooltip for Link Previews -->
+    <div class="link-preview-tooltip" id="link-preview-tooltip" role="tooltip" aria-hidden="true">
+        <!-- Tooltip Content -->
     </div>
 
     <!-- Scripts -->
-    <script src="js/notes-manager.js"></script>
+    <script src="js/notes-manager.js" defer></script>
     <noscript>
         <p>This application requires JavaScript to function correctly. Please enable JavaScript in your browser.</p>
     </noscript>

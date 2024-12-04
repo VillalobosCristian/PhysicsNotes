@@ -138,7 +138,7 @@ class NotesManager {
                           data-note-type="${note.type}"
                           data-parent-topic="${note.parentTopic || ''}">${displayText}</a>`;
             }
-        ).replace(/\\\[(.*?)\\\]/g, (match, equation) => {
+        ).replace(/\[(.*?)\]/g, (match, equation) => {
             return `<div class="math-equation">$$${equation}$$</div>`;
         });
     }
@@ -161,6 +161,7 @@ class NotesManager {
             this.contentElement.innerHTML = html;
             this.updateBreadcrumbs(note);
             this.renderBacklinks();
+            this.generateTOC(); // Add this line to generate TOC
 
             await MathJax.typesetPromise();
 
@@ -385,6 +386,28 @@ class NotesManager {
                 window.location.hash = defaultNote.id;
             }
         }
+    }
+
+    generateTOC() {
+        const tocList = document.getElementById('toc-list');
+        const headers = this.contentElement.querySelectorAll('h2, h3');
+
+        tocList.innerHTML = ''; // Clear existing TOC
+
+        headers.forEach(header => {
+            const id = header.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            header.id = id;
+
+            const li = document.createElement('li');
+            li.classList.add(`toc-${header.tagName.toLowerCase()}`);
+
+            const a = document.createElement('a');
+            a.href = `#${id}`;
+            a.textContent = header.textContent;
+
+            li.appendChild(a);
+            tocList.appendChild(li);
+        });
     }
 }
 
