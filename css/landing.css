@@ -1,27 +1,175 @@
-/* Landing Page Styles */
-
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color, #f5f5f5);
+/* Landing Page Specific Styles */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --primary-gradient: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+    --accent-gradient: linear-gradient(135deg, #667eea, #764ba2);
+    --text-gradient: linear-gradient(135deg, #1a2a6c, #0f172a);
 }
 
-.welcome-message {
+.landing-page {
+    min-height: 100vh;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gradient-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 8s ease-in-out infinite;
+}
+
+.sphere-1 {
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+    width: 50vw;
+    height: 50vw;
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.sphere-2 {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    width: 40vw;
+    height: 40vw;
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(5%, 5%); }
+}
+
+.landing-content {
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3.5rem;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    text-align: center;
+}
+
+.glass-container h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    color: #64748b;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.topic-navigation h2 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 2rem;
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.topic-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-.welcome-message h1 {
-    font-size: 3rem;
-    color: var(--text-primary, #333);
+.topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-message p {
-    font-size: 1.5rem;
-    color: var(--text-muted, #666);
+.topic-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.topic-title {
+    color: #0f172a;
+    font-weight: 500;
+}
+
+.enter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.enter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.enter-button svg {
+    transition: transform 0.3s ease;
+}
+
+.enter-button:hover svg {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .glass-container {
+        padding: 2rem;
+    }
+
+    .glass-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro-text {
+        font-size: 1.1rem;
+    }
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
 }
