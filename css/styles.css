@@ -6,16 +6,16 @@
     --secondary-color: #0288d1;
     --secondary-light: #5eb8ff;
     --secondary-dark: #005b9f;
-    
+
     /* Surface Colors */
     --background-color: #f5f7fa;
     --surface-color: #ffffff;
-    
+
     /* Text Colors */
     --text-primary: #2c3e50;
     --text-secondary: #424242;
     --text-tertiary: #757575;
-    
+
     /* Border Colors */
     --border-color: #e0e0e0;
 }
@@ -38,7 +38,12 @@ a {
     text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Space Grotesk', sans-serif;
     line-height: 1.3;
 }

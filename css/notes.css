@@ -1,222 +1,69 @@
-/* Root Variables - Layout & Structure */
+/* Root Variables */
 :root {
-    --sidebar-width: 300px;
-    --header-height: 60px;
-    --content-max-width: 800px;
+    --sidebar-width: 250px;
+    --content-padding: 2rem;
+    --gap: 1rem;
+
+    --primary-color: #4a90e2;
+    --background-color: #f9f9fc;
+    --text-primary: #222222;
+    --text-secondary: #444444;
+    --border-color: #e0e0e0;
+    --box-shadow: rgba(0, 0, 0, 0.1);
 }
 
-/* Main Layout Structure */
+/* App Layout */
 .app-container {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
+    gap: var(--gap);
     min-height: 100vh;
     background: var(--background-color);
 }
 
-/* Sidebar Styling */
+/* Sidebar */
 .sidebar {
-    background: var(--surface-color);
-    border-right: 1px solid var(--border-color);
+    background: #ffffff;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    position: fixed;
     width: var(--sidebar-width);
-}
-
-.sidebar-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--surface-color);
-}
-
-.home-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    margin-bottom: 1.25rem;
-    padding: 0.75rem;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-}
-
-.home-link:hover {
-    background: var(--background-color);
-}
-
-/* Search Functionality */
-.search-container input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-    background: var(--background-color);
-}
-
-.search-container input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-}
-
-/* Navigation Section */
-.note-navigation {
-    flex: 1;
+    border-right: 1px solid var(--border-color);
     overflow-y: auto;
-    padding: 1.5rem;
 }
 
-.note-list {
-    list-style: none;
-}
-
-.note-group {
-    margin-bottom: 2rem;
-}
-
-.note-group-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.note-group-content {
-    margin-left: 1rem;
-}
-
-.note-link {
-    display: block;
-    padding: 0.75rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    margin-bottom: 0.25rem;
-}
-
-.note-link:hover {
-    background: var(--background-color);
-    color: var(--primary-color);
-}
-
-.note-link.active {
-    background: var(--primary-color);
-    color: white;
-}
-
-/* Main Content Area */
+/* Content Area */
 .content {
-    margin-left: var(--sidebar-width);
-    padding: 2.5rem;
-    max-width: calc(var(--content-max-width) + var(--sidebar-width) + 5rem);
-}
-
-/* Note Content Styling */
-.note-content {
-    background: var(--surface-color);
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-/* Markdown Content Styling */
-.note-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-}
-
-.note-content h2 {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.note-content p {
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-}
-
-/* Math Equations */
-.math-display {
-    padding: 1.5rem;
-    margin: 1.5rem 0;
+    padding: var(--content-padding);
     background: var(--background-color);
-    border-radius: 8px;
-    overflow-x: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    /* Fully expand in grid */
+    grid-column: 2;
+    /* Ensure it spans the second column */
 }
 
-/* Breadcrumbs */
-.breadcrumbs {
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-}
-
-.breadcrumb-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.breadcrumb-link:hover {
-    color: var(--primary-color);
-}
-
-/* Backlinks Section */
-.backlinks {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background: var(--background-color);
-    border-radius: 8px;
-}
-
-.backlinks h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-tertiary);
-    margin-bottom: 1rem;
-}
-
-.backlink-item {
-    padding: 1rem;
-    background: var(--surface-color);
-    border-radius: 6px;
-    margin-bottom: 0.75rem;
-}
-
-.backlink-title {
-    font-weight: 500;
-    color: var(--primary-color);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Responsive Adjustments */
+@media (max-width: 768px) {
     .app-container {
         grid-template-columns: 1fr;
+        /* Single-column layout */
     }
 
     .sidebar {
-        position: static;
         width: 100%;
         height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .content {
-        margin-left: 0;
-        padding: 1.5rem;
+        grid-column: 1;
+        /* Take up entire width */
+        padding: 1rem;
+        /* Reduce padding for smaller screens */
     }
 }
