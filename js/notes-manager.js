@@ -79,10 +79,14 @@ class NotesManager {
         // Handle URL hash changes for navigation
         window.addEventListener('hashchange', () => this.loadFromHash());
 
-        // Setup search functionality
+        // Setup search functionality with debouncing
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
+            let debounceTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => this.handleSearch(e.target.value), 300);
+            });
         }
     }
 
@@ -110,11 +114,12 @@ class NotesManager {
                 }
 
                 const displayText = label || note.title;
-                const href = `#${id}${section ? '#' + section : ''}`;
+                const href = section ? `#${id}#${section}` : `#${id}`;
 
                 return `<a href="${href}"
                           class="wiki-link"
                           data-note-id="${id}"
+                          data-section="${section || ''}"
                           data-note-type="${note.type}"
                           data-parent-topic="${note.parentTopic || ''}">${displayText}</a>`;
             }
@@ -122,17 +127,16 @@ class NotesManager {
     }
 
     async renderNote(noteId) {
-        const note = this.notes.get(noteId);
-        if (!note) {
-            this.showError(new Error('Note not found'));
-            return;
-        }
-
-        this.currentNote = note;
-        this.updateActiveLink(noteId);
-        this.showLoading();
-
         try {
+            const note = this.notes.get(noteId);
+            if (!note) {
+                throw new Error('Note not found');
+            }
+
+            this.currentNote = note;
+            this.updateActiveLink(noteId);
+            this.showLoading();
+
             const content = await this.loadNoteContent(note.path);
             const processedContent = this.processContent(content);
             const html = marked.parse(processedContent);
@@ -250,7 +254,7 @@ class NotesManager {
                 </div>
                 <div class="backlink-context">
                     <span class="backlink-type">${note.type}</span>
-                    ${note.parentTopic ? `in ${this.notes.get(note.parentTopic)?.title || ''}` : ''}
+                    ${note.parentTopic ? `in <a href="#${note.parentTopic}">${this.notes.get(note.parentTopic)?.title || ''}</a>` : ''}
                 </div>
             </div>
         `).join('');

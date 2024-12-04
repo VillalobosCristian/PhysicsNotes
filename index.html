@@ -1,3 +1,36 @@
+<!--
+
+This HTML file represents the landing page for a personal collection of physics notes.
+It includes the following sections:
+
+1. Document Metadata:
+    - DOCTYPE declaration and HTML language attribute.
+    - Meta tags for character set, viewport settings, and description.
+    - Title of the document.
+
+2. Typography:
+    - Link to Google Fonts for "Inter" and "Space Grotesk" fonts.
+
+3. Styles:
+    - Links to external CSS stylesheets (styles.css and landing.css).
+
+4. Body Content:
+    - A gradient background with decorative spheres.
+    - Main content area with a glass container effect.
+    - Header with the title "Physics Notes".
+    - Introductory text describing the collection.
+    - Navigation section to explore different physics topics:
+        - Classical Mechanics
+        - Quantum Mechanics
+        - Electromagnetism
+        - Energy
+        - Relativity
+        - Thermodynamics
+    - Each topic is represented by a card with an icon and title.
+    - A button to enter the full knowledge base.
+
+The structure and styling aim to provide a visually appealing and user-friendly interface for accessing physics notes.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,27 +59,39 @@
     <main class="landing-content">
         <div class="glass-container">
             <h1>Physics Notes</h1>
-            <p class="intro-text">A personal collection of summarys, problems and solutions.</p>
+            <p class="intro-text">A personal collection of summaries, problems, and solutions.</p>
 
-            <nav class="topic-navigation">
+            <nav class="topic-navigation" aria-label="Physics Topics Navigation">
                 <h2>Explore Topics</h2>
                 <div class="topic-grid">
-                    <a href="./notes.html#classical-mechanics" class="topic-card">
-                        <span class="topic-icon">⚡</span>
+                    <a href="./notes.html#classical-mechanics" class="topic-card" aria-label="Classical Mechanics">
+                        <span class="topic-icon" aria-hidden="true">⚡</span>
                         <span class="topic-title">Classical Mechanics</span>
                     </a>
-                    <a href="./notes.html#quantum-mechanics" class="topic-card">
+                    <a href="./notes.html#quantum-mechanics" class="topic-card" aria-label="Quantum Mechanics">
                         <span class="topic-icon">🌌</span>
                         <span class="topic-title">Quantum Mechanics</span>
                     </a>
-                    <a href="./notes.html#electromagnetism" class="topic-card">
+                    <a href="./notes.html#electromagnetism" class="topic-card" aria-label="Electromagnetism">
                         <span class="topic-icon">⚛️</span>
                         <span class="topic-title">Electromagnetism</span>
                     </a>
+                    <a href="./notes.html#energy" class="topic-card" aria-label="Energy">
+                        <span class="topic-icon">🔋</span>
+                        <span class="topic-title">Energy</span>
+                    </a>
+                    <a href="./notes.html#relativity" class="topic-card" aria-label="Relativity">
+                        <span class="topic-icon">🕰️</span>
+                        <span class="topic-title">Relativity</span>
+                    </a>
+                    <a href="./notes.html#thermodynamics" class="topic-card" aria-label="Thermodynamics">
+                        <span class="topic-icon">🔥</span>
+                        <span class="topic-title">Thermodynamics</span>
+                    </a>
                 </div>
-                <a href="./notes.html" class="enter-button">
+                <a href="./notes.html" class="enter-button" aria-label="Enter Knowledge Base">
                     <span>Enter Knowledge Base</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
                     </svg>

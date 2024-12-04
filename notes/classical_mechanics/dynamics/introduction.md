@@ -1,6 +1,11 @@
 # Dynamics
 
 Dynamics, building upon [[kinematics|kinematics]], is the study of forces and their effects on motion. While kinematics describes how objects move, dynamics explains why they move as they do.
+Dynamics is the study of forces and motion.
+
+![[newtons-laws]]
+
+
 
 ## Fundamental Concepts
 

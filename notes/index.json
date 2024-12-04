@@ -11,14 +11,47 @@
             "prerequisites": []
         },
         {
+            "id": "dynamics",
+            "title": "Dynamics",
+            "path": "classical_mechanics/dynamics/introduction.md",
+            "tags": ["classical-mechanics", "dynamics"],
+            "type": "subtopic",
+            "parentTopic": "classical-mechanics",
+            "created": "2024-01-02",
+            "modified": "2024-01-02",
+            "prerequisites": ["classical-mechanics"]
+        },
+        {
+            "id": "newtons-laws",
+            "title": "Newton's Laws of Motion",
+            "path": "classical_mechanics/dynamics/newtons_laws.md",
+            "tags": ["dynamics", "forces"],
+            "type": "concept",
+            "parentTopic": "dynamics",
+            "created": "2024-01-03",
+            "modified": "2024-01-03",
+            "prerequisites": ["dynamics"]
+        },
+        {
+            "id": "energy",
+            "title": "Energy",
+            "path": "classical_mechanics/energy/introduction.md",
+            "tags": ["classical-mechanics", "energy"],
+            "type": "subtopic",
+            "parentTopic": "classical-mechanics",
+            "created": "2024-01-04",
+            "modified": "2024-01-04",
+            "prerequisites": ["classical-mechanics"]
+        },
+        {
             "id": "kinematics",
             "title": "Kinematics",
             "path": "classical_mechanics/kinematics/introduction.md",
             "tags": ["classical-mechanics", "kinematics"],
             "type": "subtopic",
             "parentTopic": "classical-mechanics",
-            "created": "2024-01-01",
-            "modified": "2024-01-01",
+            "created": "2024-01-05",
+            "modified": "2024-01-05",
             "prerequisites": ["classical-mechanics"]
         },
         {
@@ -28,31 +61,9 @@
             "tags": ["kinematics", "motion"],
             "type": "concept",
             "parentTopic": "kinematics",
-            "created": "2024-01-01",
-            "modified": "2024-01-01",
+            "created": "2024-01-06",
+            "modified": "2024-01-06",
             "prerequisites": ["kinematics"]
-        },
-        {
-            "id": "dynamics",
-            "title": "Dynamics",
-            "path": "classical_mechanics/dynamics/introduction.md",
-            "tags": ["classical-mechanics", "dynamics"],
-            "type": "subtopic",
-            "parentTopic": "classical-mechanics",
-            "created": "2024-01-01",
-            "modified": "2024-01-01",
-            "prerequisites": ["kinematics"]
-        },
-        {
-            "id": "newtons-laws",
-            "title": "Newton's Laws of Motion",
-            "path": "classical_mechanics/dynamics/newtons_laws.md",
-            "tags": ["dynamics", "forces"],
-            "type": "concept",
-            "parentTopic": "dynamics",
-            "created": "2024-01-01",
-            "modified": "2024-01-01",
-            "prerequisites": ["dynamics"]
         },
         {
             "id": "electromagnetism",
@@ -65,6 +76,39 @@
             "prerequisites": []
         },
         {
+            "id": "electric-fields",
+            "title": "Electric Fields",
+            "path": "electromagnetism/electric_fields/introduction.md",
+            "tags": ["electromagnetism", "electric"],
+            "type": "subtopic",
+            "parentTopic": "electromagnetism",
+            "created": "2024-04-28",
+            "modified": "2024-04-28",
+            "prerequisites": ["electromagnetism"]
+        },
+        {
+            "id": "magnetic-fields",
+            "title": "Magnetic Fields",
+            "path": "electromagnetism/magnetic_fields/introduction.md",
+            "tags": ["electromagnetism", "magnetic"],
+            "type": "subtopic",
+            "parentTopic": "electromagnetism",
+            "created": "2024-04-29",
+            "modified": "2024-04-29",
+            "prerequisites": ["electromagnetism"]
+        },
+        {
+            "id": "maxwells-equations",
+            "title": "Maxwell's Equations",
+            "path": "electromagnetism/maxwells_equations/introduction.md",
+            "tags": ["electromagnetism", "Maxwell"],
+            "type": "concept",
+            "parentTopic": "electromagnetism",
+            "created": "2024-04-30",
+            "modified": "2024-04-30",
+            "prerequisites": ["electromagnetism"]
+        },
+        {
             "id": "quantum-mechanics",
             "title": "Quantum Mechanics",
             "path": "quantum_mechanics/introduction.md",
@@ -73,6 +117,39 @@
             "created": "2024-04-27",
             "modified": "2024-04-27",
             "prerequisites": []
+        },
+        {
+            "id": "schrodinger-equation",
+            "title": "Schrödinger Equation",
+            "path": "quantum_mechanics/schrodinger_equation/introduction.md",
+            "tags": ["quantum-mechanics", "Schrödinger"],
+            "type": "subtopic",
+            "parentTopic": "quantum-mechanics",
+            "created": "2024-04-28",
+            "modified": "2024-04-28",
+            "prerequisites": ["quantum-mechanics"]
+        },
+        {
+            "id": "heisenberg-uncertainty",
+            "title": "Heisenberg Uncertainty Principle",
+            "path": "quantum_mechanics/heisenberg_uncertainty/introduction.md",
+            "tags": ["quantum-mechanics", "uncertainty"],
+            "type": "subtopic",
+            "parentTopic": "quantum-mechanics",
+            "created": "2024-04-29",
+            "modified": "2024-04-29",
+            "prerequisites": ["quantum-mechanics"]
+        },
+        {
+            "id": "wave-particle-duality",
+            "title": "Wave-Particle Duality",
+            "path": "quantum_mechanics/wave_particle_duality/introduction.md",
+            "tags": ["quantum-mechanics", "duality"],
+            "type": "concept",
+            "parentTopic": "quantum-mechanics",
+            "created": "2024-04-30",
+            "modified": "2024-04-30",
+            "prerequisites": ["quantum-mechanics"]
         },
         {
             "id": "relativity",
@@ -85,6 +162,28 @@
             "prerequisites": []
         },
         {
+            "id": "special-relativity",
+            "title": "Special Relativity",
+            "path": "relativity/special_relativity/introduction.md",
+            "tags": ["relativity", "special"],
+            "type": "subtopic",
+            "parentTopic": "relativity",
+            "created": "2024-04-28",
+            "modified": "2024-04-28",
+            "prerequisites": ["relativity"]
+        },
+        {
+            "id": "general-relativity",
+            "title": "General Relativity",
+            "path": "relativity/general_relativity/introduction.md",
+            "tags": ["relativity", "general"],
+            "type": "subtopic",
+            "parentTopic": "relativity",
+            "created": "2024-04-29",
+            "modified": "2024-04-29",
+            "prerequisites": ["relativity"]
+        },
+        {
             "id": "thermodynamics",
             "title": "Thermodynamics",
             "path": "thermodynamics/introduction.md",
@@ -95,14 +194,37 @@
             "prerequisites": []
         },
         {
-            "id": "energy",
-            "title": "Energy",
-            "path": "energy/introduction.md",
-            "tags": ["physics", "energy"],
-            "type": "main-topic",
-            "created": "2024-04-27",
-            "modified": "2024-04-27",
-            "prerequisites": []
+            "id": "laws-of-thermodynamics",
+            "title": "Laws of Thermodynamics",
+            "path": "thermodynamics/laws_of_thermodynamics/introduction.md",
+            "tags": ["thermodynamics", "laws"],
+            "type": "subtopic",
+            "parentTopic": "thermodynamics",
+            "created": "2024-04-28",
+            "modified": "2024-04-28",
+            "prerequisites": ["thermodynamics"]
+        },
+        {
+            "id": "entropy",
+            "title": "Entropy",
+            "path": "thermodynamics/entropy/introduction.md",
+            "tags": ["thermodynamics", "entropy"],
+            "type": "subtopic",
+            "parentTopic": "thermodynamics",
+            "created": "2024-04-29",
+            "modified": "2024-04-29",
+            "prerequisites": ["thermodynamics"]
+        },
+        {
+            "id": "heat-engines",
+            "title": "Heat Engines",
+            "path": "thermodynamics/heat_engines/introduction.md",
+            "tags": ["thermodynamics", "heat"],
+            "type": "concept",
+            "parentTopic": "thermodynamics",
+            "created": "2024-04-30",
+            "modified": "2024-04-30",
+            "prerequisites": ["thermodynamics"]
         }
     ]
 }

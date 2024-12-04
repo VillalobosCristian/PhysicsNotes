@@ -67,3 +67,88 @@
         /* Reduce padding for smaller screens */
     }
 }
+
+/* Styles for embedded notes */
+.embedded-note {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+}
+
+.embedded-note em {
+    color: #ff5722;
+}
+
+/* Enhanced Wiki-Link Styles */
+.wiki-link {
+    color: #1e90ff;
+    text-decoration: none;
+    border-bottom: 1px dotted #1e90ff;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.wiki-link:hover {
+    color: #104e8b;
+    border-bottom-color: #104e8b;
+}
+
+.wiki-link.active {
+    font-weight: bold;
+}
+
+/* Unresolved Links */
+.wiki-link.unresolved {
+    color: #ff4d4d;
+    border-bottom-color: #ff4d4d;
+}
+
+/* Backlinks Section */
+.backlinks {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.backlinks h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.backlink-item {
+    margin-bottom: 0.75rem;
+}
+
+.backlink-title a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.backlink-title a:hover {
+    color: #104e8b;
+}
+
+.backlink-context {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-left: 1rem;
+}
+
+.backlink-type {
+    font-style: italic;
+    color: #555555;
+}
+
+/* Responsive Adjustments for Backlinks */
+@media (max-width: 768px) {
+    .backlinks {
+        padding-top: 0.5rem;
+    }
+
+    .backlink-context {
+        margin-left: 0.5rem;
+    }
+}
