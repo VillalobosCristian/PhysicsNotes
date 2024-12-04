@@ -53,6 +53,56 @@
             "created": "2024-01-01",
             "modified": "2024-01-01",
             "prerequisites": ["dynamics"]
+        },
+        {
+            "id": "electromagnetism",
+            "title": "Electromagnetism",
+            "path": "electromagnetism/introduction.md",
+            "tags": ["physics", "electromagnetism"],
+            "type": "main-topic",
+            "created": "2024-04-27",
+            "modified": "2024-04-27",
+            "prerequisites": []
+        },
+        {
+            "id": "quantum-mechanics",
+            "title": "Quantum Mechanics",
+            "path": "quantum_mechanics/introduction.md",
+            "tags": ["physics", "quantum"],
+            "type": "main-topic",
+            "created": "2024-04-27",
+            "modified": "2024-04-27",
+            "prerequisites": []
+        },
+        {
+            "id": "relativity",
+            "title": "Relativity",
+            "path": "relativity/introduction.md",
+            "tags": ["physics", "relativity"],
+            "type": "main-topic",
+            "created": "2024-04-27",
+            "modified": "2024-04-27",
+            "prerequisites": []
+        },
+        {
+            "id": "thermodynamics",
+            "title": "Thermodynamics",
+            "path": "thermodynamics/introduction.md",
+            "tags": ["physics", "thermodynamics"],
+            "type": "main-topic",
+            "created": "2024-04-27",
+            "modified": "2024-04-27",
+            "prerequisites": []
+        },
+        {
+            "id": "energy",
+            "title": "Energy",
+            "path": "energy/introduction.md",
+            "tags": ["physics", "energy"],
+            "type": "main-topic",
+            "created": "2024-04-27",
+            "modified": "2024-04-27",
+            "prerequisites": []
         }
     ]
 }

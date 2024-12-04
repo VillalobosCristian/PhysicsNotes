@@ -38,8 +38,8 @@
 <body>
     <div class="app-container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <header class="sidebar-header">
+        <aside class="sidebar" aria-labelledby="sidebar-header">
+            <header class="sidebar-header" id="sidebar-header">
                 <!-- Home Link -->
                 <a href="index.html" class="home-link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -50,12 +50,13 @@
                 </a>
                 <!-- Search -->
                 <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search notes..." aria-label="Search notes">
+                    <input type="search" id="search-input" name="search" placeholder="Search notes..."
+                        aria-label="Search notes">
                 </div>
             </header>
             <!-- Navigation -->
             <nav class="note-navigation">
-                <div class="note-list">
+                <div class="note-list" role="list">
                     <!-- Dynamic Note Links Will Be Injected Here -->
                 </div>
             </nav>
@@ -65,7 +66,12 @@
         <main class="content">
             <!-- Breadcrumbs -->
             <div class="content-header">
-                <div class="breadcrumbs" id="breadcrumbs"></div>
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="#">Home</a></li>
+                        <li>Notes</li>
+                    </ol>
+                </nav>
             </div>
 
             <!-- Note Content -->
@@ -79,7 +85,7 @@
             </article>
 
             <!-- Backlinks -->
-            <aside class="backlinks">
+            <aside class="backlinks" aria-live="polite">
                 <h3>Linked References</h3>
                 <div class="backlinks-content" id="backlinks"></div>
             </aside>
@@ -88,6 +94,9 @@
 
     <!-- Scripts -->
     <script src="js/notes-manager.js"></script>
+    <noscript>
+        <p>This application requires JavaScript to function correctly. Please enable JavaScript in your browser.</p>
+    </noscript>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             window.notesManager = new NotesManager();
