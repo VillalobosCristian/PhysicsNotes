@@ -12,6 +12,11 @@
     --box-shadow: rgba(0, 0, 0, 0.1);
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    /* ...existing code... */
+}
+
 /* App Layout */
 .app-container {
     display: grid;
@@ -31,6 +36,45 @@
     width: var(--sidebar-width);
     border-right: 1px solid var(--border-color);
     overflow-y: auto;
+}
+
+/* Sidebar Enhancements */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.home-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--accent-color);
+}
+
+.search-container {
+    width: 100%;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
 /* Content Area */
@@ -77,8 +121,47 @@
     border-radius: 4px;
 }
 
-.embedded-note em {
-    color: #ff5722;
+/* Enhanced Note Content Styling */
+.note-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.note-content h1, .note-content h2, .note-content h3 {
+    color: var(--heading-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.note-content p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Style for GIFs within notes */
+.note-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Math Equation Styling */
+.math-equation {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Improved Embedded Notes */
+.embedded-note {
+    background-color: rgba(74, 144, 226, 0.05);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
 }
 
 /* Enhanced Wiki-Link Styles */
@@ -115,10 +198,19 @@
     font-size: 1.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
+    /* ...existing code... */
 }
 
 .backlink-item {
     margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.backlink-item:hover {
+    background-color: rgba(74, 144, 226, 0.1);
 }
 
 .backlink-title a {
@@ -151,4 +243,15 @@
     .backlink-context {
         margin-left: 0.5rem;
     }
+
+    .note-content {
+        font-size: 1rem;
+    }
+}
+
+/* Ensure tooltip is above other content */
+.link-preview-tooltip {
+    position: absolute;
+    /* ...existing styles... */
+    z-index: 1000;
 }

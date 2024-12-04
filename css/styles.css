@@ -1,15 +1,45 @@
+/* Color Variables */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #ff7f50;
+    --accent-color: #1e90ff;
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --heading-color: #1a1a1a;
+    --text-secondary: #555555; /* Added for backlink-context */
+}
+
+/* Dark Mode Variables */
+:root.dark-mode {
+    --primary-color: #90cdf4;
+    --secondary-color: #f56565;
+    --accent-color: #63b3ed;
+    --background-color: #1a202c;
+    --text-color: #e2e8f0;
+    --heading-color: #cbd5e0;
+    --text-secondary: #a0aec0;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Removed redundant background-color from universal selector */
 }
 
+/* Body Styles */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #333333;
-    background-color: #f5f5f5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Apply dark mode styles */
+body.dark-mode {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 /* Header Styles */
@@ -22,6 +52,13 @@ body {
     justify-content: center;
     color: #fff;
     text-align: center;
+}
+
+.header,
+.sidebar,
+.content {
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .background-overlay {
@@ -42,9 +79,10 @@ body {
 }
 
 .header h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Merriweather', serif;
     font-size: 3rem;
     margin-bottom: 20px;
+    color: var(--heading-color);
 }
 
 .header p {
@@ -53,19 +91,22 @@ body {
     color: #dddddd;
 }
 
+/* Button Styles */
 .btn-primary {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #ff7f50;
+    background-color: var(--secondary-color);
     color: #ffffff;
     text-decoration: none;
     border-radius: 25px;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
-    background-color: #ff5722;
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* Topics Section */
@@ -90,19 +131,20 @@ body {
     margin: 0 auto;
 }
 
+/* Topic Card Enhancements */
 .topic-card {
-    background-color: #f0f8ff;
+    background-color: #ffffff;
     padding: 30px 20px;
     border-radius: 15px;
     text-decoration: none;
-    color: #333;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .topic-card:hover {
-    transform: translateY(-10px);
-    background-color: #e6f7ff;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .topic-card .icon {
@@ -210,6 +252,14 @@ body {
         width: 100%;
         max-width: 300px;
     }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 /* Enhanced Responsive Adjustments */
@@ -247,4 +297,88 @@ body {
         width: 100%;
         max-width: none;
     }
+
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Backlink Styles */
+.backlink-item {
+    margin-bottom: 0.75rem;
+    transition: background-color 0.3s ease;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    background-color: rgba(74, 144, 226, 0.05);
+}
+
+.backlink-item:hover {
+    background-color: rgba(74, 144, 226, 0.15);
+}
+
+.backlink-title a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.backlink-title a:hover {
+    color: #104e8b;
+}
+
+.backlink-context {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-left: 1rem;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    background-color: #4caf50;
+}
+
+.toast.error {
+    background-color: #f44336;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    color: var(--heading-color);
+}
+
+/* Math Equation Styles */
+.math-equation {
+    margin: 1.5em 0;
+    text-align: center;
+}
+
+.math-equation img {
+    max-width: 100%;
+    height: auto;
 }

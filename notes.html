@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Interactive Physics Knowledge Base">
+    <meta name="description" content="Interactive Physics and Mathematics Knowledge Base">
+    <meta name="keywords" content="Physics, Mechanics, Quantum, Electromagnetism, Relativity, Thermodynamics, Mathematics">
     <title>Physics Knowledge Base</title>
 
     <!-- Typography -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -45,8 +46,7 @@
                 <!-- Home Link -->
                 <a href="index.html" class="home-link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        <!-- SVG Paths -->
                     </svg>
                     Home
                 </a>
@@ -57,7 +57,7 @@
                 </div>
             </header>
             <!-- Navigation -->
-            <nav class="note-navigation">
+            <nav class="note-navigation" aria-label="Note Navigation">
                 <div class="note-list" role="list">
                     <!-- Dynamic Note Links Will Be Injected Here -->
                 </div>
@@ -71,7 +71,7 @@
                 <nav class="breadcrumbs" aria-label="Breadcrumb">
                     <ol>
                         <li><a href="#">Home</a></li>
-                        <li>Notes</li>
+                        <li aria-current="page">Notes</li>
                     </ol>
                 </nav>
             </div>
@@ -79,10 +79,12 @@
             <!-- Note Content -->
             <article class="note-content-wrapper">
                 <div class="note-content" id="note-content">
-                    <div class="welcome-message">
-                        <h1>Welcome to the Physics Knowledge Base</h1>
-                        <p>Select a topic from the sidebar to begin exploring.</p>
-                    </div>
+                    <section class="math-content">
+                        <div class="welcome-message">
+                            <h1>Welcome to the Physics Knowledge Base</h1>
+                            <p>Select a topic from the sidebar to begin exploring.</p>
+                        </div>
+                    </section>
                 </div>
             </article>
 
@@ -94,10 +96,10 @@
         </main>
     </div>
 
-    <div class="collaboration-toolbar">
-        <div class="active-users"></div>
-        <button class="share-button">Share Note</button>
-        <div class="comment-thread"></div>
+    <div class="collaboration-toolbar" aria-label="Collaboration Toolbar">
+        <div class="active-users" aria-label="Active Users"></div>
+        <button class="share-button" aria-label="Share Note">Share Note</button>
+        <div class="comment-thread" aria-label="Comment Thread"></div>
     </div>
 
     <!-- Scripts -->

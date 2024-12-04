@@ -37,12 +37,14 @@ The structure and styling aim to provide a visually appealing and user-friendly 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal Physics Notes Collection">
+    <meta name="description" content="Professional Collection of Physics and Mathematics Notes">
+    <meta name="keywords" content="Physics, Mathematics, Mechanics, Quantum, Electromagnetism, Relativity, Thermodynamics">
+    <meta name="author" content="Your Name">
     <title>Physics Notes</title>
 
     <!-- Typography -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@300;400;700&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -58,34 +60,34 @@ The structure and styling aim to provide a visually appealing and user-friendly 
 
     <main class="landing-content">
         <div class="glass-container">
-            <h1>Physics Notes</h1>
-            <p class="intro-text">A personal collection of summaries, problems, and solutions.</p>
+            <h1>Physics & Mathematics Notes</h1>
+            <p class="intro-text">A comprehensive collection of physics and mathematics summaries, problems, and solutions.</p>
 
-            <nav class="topic-navigation" aria-label="Physics Topics Navigation">
+            <nav class="topic-navigation" aria-label="Physics and Mathematics Topics Navigation">
                 <h2>Explore Topics</h2>
                 <div class="topic-grid">
                     <a href="./notes.html#classical-mechanics" class="topic-card" aria-label="Classical Mechanics">
-                        <span class="topic-icon" aria-hidden="true">⚡</span>
+                        <span class="topic-icon" aria-hidden="true">⚙️</span>
                         <span class="topic-title">Classical Mechanics</span>
                     </a>
                     <a href="./notes.html#quantum-mechanics" class="topic-card" aria-label="Quantum Mechanics">
-                        <span class="topic-icon">🌌</span>
+                        <span class="topic-icon" aria-hidden="true">🔬</span>
                         <span class="topic-title">Quantum Mechanics</span>
                     </a>
                     <a href="./notes.html#electromagnetism" class="topic-card" aria-label="Electromagnetism">
-                        <span class="topic-icon">⚛️</span>
+                        <span class="topic-icon" aria-hidden="true">🔌</span>
                         <span class="topic-title">Electromagnetism</span>
                     </a>
                     <a href="./notes.html#energy" class="topic-card" aria-label="Energy">
-                        <span class="topic-icon">🔋</span>
+                        <span class="topic-icon" aria-hidden="true">⚡</span>
                         <span class="topic-title">Energy</span>
                     </a>
                     <a href="./notes.html#relativity" class="topic-card" aria-label="Relativity">
-                        <span class="topic-icon">🕰️</span>
+                        <span class="topic-icon" aria-hidden="true">🌌</span>
                         <span class="topic-title">Relativity</span>
                     </a>
                     <a href="./notes.html#thermodynamics" class="topic-card" aria-label="Thermodynamics">
-                        <span class="topic-icon">🔥</span>
+                        <span class="topic-icon" aria-hidden="true">🔥</span>
                         <span class="topic-title">Thermodynamics</span>
                     </a>
                 </div>
@@ -99,6 +101,15 @@ The structure and styling aim to provide a visually appealing and user-friendly 
             </nav>
         </div>
     </main>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+        🌙
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/notes-manager.js"></script>
+    <script src="js/dark-mode.js"></script>
 </body>
 
 </html>

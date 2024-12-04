@@ -79,6 +79,16 @@ class NotesManager {
         // Handle URL hash changes for navigation
         window.addEventListener('hashchange', () => this.loadFromHash());
 
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
         // Setup search functionality with debouncing
         const searchInput = document.getElementById('search-input');
         if (searchInput) {
@@ -103,6 +113,11 @@ class NotesManager {
         }
     }
 
+    /**
+     * Processes and renders mathematical content within notes.
+     * @param {string} content - The raw markdown content of the note.
+     * @returns {string} - The processed HTML content with LaTeX rendered.
+     */
     processContent(content) {
         return content.replace(
             /\[\[([\w-]+)(?:#([\w-]+))?\|?(.*?)\]\]/g,
@@ -123,7 +138,9 @@ class NotesManager {
                           data-note-type="${note.type}"
                           data-parent-topic="${note.parentTopic || ''}">${displayText}</a>`;
             }
-        );
+        ).replace(/\\\[(.*?)\\\]/g, (match, equation) => {
+            return `<div class="math-equation">$$${equation}$$</div>`;
+        });
     }
 
     async renderNote(noteId) {
@@ -148,8 +165,10 @@ class NotesManager {
             await MathJax.typesetPromise();
 
             document.title = `${note.title} - Physics Notes`;
+            this.showToast('Note loaded successfully!', 'success');
         } catch (error) {
             this.showError(error);
+            this.showToast('Failed to load note.', 'error');
             console.error('Error rendering note:', error);
         }
     }
@@ -292,6 +311,10 @@ class NotesManager {
         element.innerHTML = highlighted;
     }
 
+    /**
+     * Updates the active link in the navigation based on the current note.
+     * @param {string} noteId - The ID of the current note.
+     */
     updateActiveLink(noteId) {
         document.querySelectorAll('.note-link').forEach(link => {
             const isActive = link.getAttribute('href') === `#${noteId}`;
@@ -300,6 +323,9 @@ class NotesManager {
         });
     }
 
+    /**
+     * Enhances user experience with smooth transitions and better loading indicators.
+     */
     showLoading() {
         this.contentElement.innerHTML = `
             <div class="loading" role="status" aria-live="polite">
@@ -323,6 +349,27 @@ class NotesManager {
                 </div>
             </div>
         `;
+    }
+
+    /**
+     * Shows a toast notification for user feedback.
+     * @param {string} message - The message to display.
+     * @param {string} type - Type of message: 'success', 'error', etc.
+     */
+    showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            toast.addEventListener('transitionend', () => toast.remove());
+        }, 3000);
     }
 
     loadFromHash() {
