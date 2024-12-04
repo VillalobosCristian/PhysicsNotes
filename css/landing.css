@@ -1,175 +1,258 @@
-/* Landing Page Specific Styles */
+/* =========================
+   1. CSS Variables (Theming)
+   ========================= */
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.95);
+    /* Glassmorphism Colors */
+    --glass-bg: rgba(255, 255, 255, 0.25);
     --glass-border: rgba(255, 255, 255, 0.3);
     --glass-shadow: rgba(0, 0, 0, 0.1);
-    --primary-gradient: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
-    --accent-gradient: linear-gradient(135deg, #667eea, #764ba2);
-    --text-gradient: linear-gradient(135deg, #1a2a6c, #0f172a);
-    --math-primary: #1e90ff;
+
+    /* Gradient Backgrounds */
+    --primary-gradient: linear-gradient(135deg, #667eea, #764ba2);
+    --accent-gradient: linear-gradient(135deg, #ff758c, #ff7eb3);
+    --text-gradient: linear-gradient(135deg, #ff7eb3, #ff758c);
+
+    /* Color Palette */
+    --background-color: #1e1e2f;
+    --secondary-bg: rgba(255, 255, 255, 0.1);
+    --primary-color: #ffffff;
+    --secondary-color: #cccccc;
+    --math-primary: #ff758c;
+
+    /* Typography */
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Merriweather', serif;
+
+    /* Spacing */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+
+    /* Border Radius */
+    --radius-small: 8px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+
+    /* Shadows */
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-deep: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --glass-bg: rgba(50, 50, 50, 0.4);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --glass-shadow: rgba(255, 255, 255, 0.1);
+        --background-color: #121212;
+        --secondary-bg: rgba(255, 255, 255, 0.05);
+        --primary-color: #e0e0e0;
+        --secondary-color: #a0a0a0;
+    }
+}
+
+/* =========================
+   2. Global Styles
+   ========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-primary);
+    background: var(--background-color);
+    color: var(--primary-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+   3. Landing Page Layout
+   ========================= */
 .landing-page {
-    min-height: 100vh;
-    background: #f8fafc;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: var(--spacing-large);
     overflow: hidden;
 }
 
 .gradient-bg {
     position: fixed;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     overflow: hidden;
 }
 
 .gradient-sphere {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: float 10s ease-in-out infinite;
+    filter: blur(100px);
+    opacity: 0.6;
+    animation: float 20s ease-in-out infinite;
     will-change: transform;
 }
 
 .sphere-1 {
-    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
-    width: 50vw;
-    height: 50vw;
-    top: -10%;
-    left: -10%;
+    background: var(--primary-gradient);
+    width: 60vw;
+    height: 60vw;
+    top: -20%;
+    left: -20%;
     animation-delay: 0s;
 }
 
 .sphere-2 {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--accent-gradient);
     width: 40vw;
     height: 40vw;
-    bottom: -10%;
-    right: -10%;
-    animation-delay: -4s;
+    bottom: -20%;
+    right: -20%;
+    animation-delay: -10s;
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(5%, 5%); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(10px, -10px) rotate(360deg);
+    }
 }
 
+/* =========================
+   4. Content Styling
+   ========================= */
 .landing-content {
-    max-width: 800px;
-    width: 90%;
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-.glass-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 24px;
-    padding: 3.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    padding: var(--spacing-large);
+    background: var(--secondary-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-light);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.glass-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px var(--glass-shadow);
+.landing-content:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-deep);
 }
 
-.glass-container h1 {
-    font-family: 'Merriweather', serif;
+.landing-content h1 {
+    font-family: var(--font-secondary);
     font-size: 3.5rem;
     font-weight: 700;
     background: var(--text-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-medium);
     letter-spacing: -0.02em;
     color: var(--math-primary);
 }
 
 .intro-text {
     font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-large);
     font-weight: 400;
 }
 
+/* =========================
+   5. Topic Navigation
+   ========================= */
 .topic-navigation h2 {
-    font-size: 1.5rem;
-    color: #0f172a;
-    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-medium);
 }
 
 .topic-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-medium);
+    margin-bottom: var(--spacing-large);
 }
 
 .topic-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    background-color: #ffffff;
+    padding: var(--spacing-large);
+    background-color: var(--secondary-bg);
     color: var(--math-primary);
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    background-color: #e6f7ff;
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-deep);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .topic-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: var(--spacing-small);
     color: var(--math-primary);
 }
 
 .topic-title {
-    color: #0f172a;
+    color: var(--primary-color);
+    font-size: 1.25rem;
     font-weight: 500;
+    text-align: center;
 }
 
+/* =========================
+   6. Call-to-Action Button
+   ========================= */
 .enter-button {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     background: var(--primary-gradient);
-    color: #ffffff;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    font-weight: 500;
+    color: var(--primary-color);
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-small);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     cursor: pointer;
 }
 
 .enter-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-deep);
     background: var(--accent-gradient);
 }
 
 .enter-button:focus {
-    outline: 2px solid #ffffff;
-    outline-offset: 2px;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 .enter-button svg {
@@ -177,34 +260,32 @@ body {
 }
 
 .enter-button:hover svg {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
-/* Dark Mode Styles */
-:root.dark-mode {
-    --glass-bg: rgba(50, 50, 50, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: rgba(255, 255, 255, 0.1);
-    --text-gradient: linear-gradient(135deg, #ffffff, #dddddd);
-}
-
-.glass-container.dark-mode {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px var(--glass-shadow);
-}
-
-.glass-container.dark-mode h1 {
-    background: var(--text-gradient);
-}
-
-/* Responsive Enhancements */
-@media (max-width: 768px) {
-    .glass-container {
-        padding: 2rem;
+/* =========================
+   7. Responsive Enhancements
+   ========================= */
+@media (max-width: 1024px) {
+    .landing-content h1 {
+        font-size: 3rem;
     }
 
-    .glass-container h1 {
+    .topic-icon {
+        font-size: 2.5rem;
+    }
+
+    .enter-button {
+        padding: 0.7rem 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .landing-content {
+        padding: var(--spacing-medium);
+    }
+
+    .landing-content h1 {
         font-size: 2.5rem;
     }
 
@@ -213,13 +294,22 @@ body {
     }
 
     .topic-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .topic-card {
+        padding: var(--spacing-medium);
+    }
+
+    .enter-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
     }
 }
 
-@media (max-width: 600px) {
-    .glass-container {
-        padding: 1.5rem;
+@media (max-width: 480px) {
+    .landing-content {
+        padding: var(--spacing-small);
     }
 
     .landing-content h1 {
@@ -230,11 +320,32 @@ body {
         font-size: 1rem;
     }
 
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
     .topic-card {
-        padding: 1rem;
+        padding: var(--spacing-small);
     }
 
     .enter-button {
-        padding: 0.8rem 1.5rem;
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================
+   8. Accessibility Enhancements
+   ========================= */
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    .gradient-sphere {
+        animation: none;
+    }
+
+    .landing-content,
+    .topic-card,
+    .enter-button {
+        transition: none;
     }
 }

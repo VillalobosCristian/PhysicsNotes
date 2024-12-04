@@ -403,3 +403,25 @@ h1, h2, h3, h4, h5, h6 {
 .link-preview-tooltip:hover {
     opacity: 1;
 }
+
+/* Workflow Section Styles */
+#workflow {
+    padding: 2rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#workflow h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#workflow ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+}
+
+#workflow li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
